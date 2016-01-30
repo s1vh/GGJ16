@@ -35,7 +35,7 @@ public class Level1 : MonoBehaviour {
 		if(seq2.Count == 4 && show == true){
 			showSeqUser ();
 			compareSeqs ();
-			seq2.Clear();
+			seq2.Clear ();
 		}
 			
 
