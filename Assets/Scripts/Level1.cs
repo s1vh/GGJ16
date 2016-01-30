@@ -8,6 +8,8 @@ public class Level1 : MonoBehaviour {
 	public List<int> seq = new List<int>();
 	public int dish;
 
+	public List<int> seq2 = new List<int>();
+
 
 	// Use this for initialization
 	void Start () {
