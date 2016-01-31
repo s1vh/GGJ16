@@ -10,10 +10,7 @@ public class dish3 : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         level1 = backgroundLevel1.GetComponent<Level1>();
-
-
     }
 
     // Update is called once per frame
@@ -24,9 +21,7 @@ public class dish3 : MonoBehaviour
 
     void OnMouseUp()
     {
-
         level1.dish = 3;
-        //level1.seq2.Add (3);
 
         if (level1.seq[level1.inputOrder] == 3)         // if EQUAL
         {
@@ -35,12 +30,10 @@ public class dish3 : MonoBehaviour
 
             if (level1.inputOrder == level1.seq.Count)  // if COMPLETED
             {
-
                 Debug.Log("YOU WIN");   // trace
                 //level1.difficulty++;
 
                 //reset routine
-
             }
 
         } else {                                        // not EQUAL
