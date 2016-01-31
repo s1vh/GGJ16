@@ -34,6 +34,7 @@ public class dish4 : MonoBehaviour
                 //level1.difficulty++;
 
                 //reset routine
+                level1.inputOrder = 0;
             }
 
         } else {                                        // not EQUAL
