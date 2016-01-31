@@ -7,39 +7,39 @@ public class Level1 : MonoBehaviour {
 
 	public List<int> seq = new List<int>();
 	public int dish;
+    public int nSeq = 4;
+    public int inputOrder = 0;
+    //public List<int> seq2 = new List<int>();
 
-	public List<int> seq2 = new List<int>();
-
-	bool show = true;
+    bool show = true;
 
 
 	// Use this for initialization
 	void Start () {
 
-		for (int i = 0; i <= 3; i++){
-			createSeq (4);
+		for (int i = 0; i < nSeq; i++) {
+
+			createSeq(4);
 
 		}
 
-		for (int i = 0; i < seq.Count; i++){
-			Debug.Log (seq[i]);
+		for (int i = 0; i < seq.Count; i++){    // trace
+
+			Debug.Log(seq[i]);
+
 		}
-
-
 
 	}
 
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log (dish);
-		if(seq2.Count == 4 && show == true){
-			showSeqUser ();
-			compareSeqs ();
-			seq2.Clear ();
-		}
+		//if(seq2.Count == 4 && show == true){
+			//showSeqUser ();
+			//compareSeqs ();
+			//seq2.Clear ();
+		//}
 			
-
-
 	}
 
 	private void createSeq(int r){
@@ -53,26 +53,26 @@ public class Level1 : MonoBehaviour {
 
 	}
 
-	private void showSeqUser(){
+	//private void showSeqUser(){
 
-		for (int i = 0; i < seq2.Count; i++) {
-			Debug.Log (seq2 [i]);
-		}
+		//for (int i = 0; i < seq2.Count; i++) {
+			//Debug.Log (seq2 [i]);
+		//}
 			
-		show = false;
+		//show = false;
 
-	}
+	//}
 
-	private void compareSeqs(){
+	//private void compareSeqs(){
 
-		if (seq2.Count == 4 && seq [0] == seq2 [0] && seq [1] == seq2 [1] && seq [2] == seq2 [2] && seq [3] == seq2 [3]) {
-			win ();
-		}
+		//if (seq2.Count == 4 && seq [0] == seq2 [0] && seq [1] == seq2 [1] && seq [2] == seq2 [2] && seq [3] == seq2 [3]) {
+			//win ();
+		//}
 
-	}
+	//}
 
-	private void win(){
-		Debug.Log("WIN");
-	}
+	//private void win(){
+		//Debug.Log("WIN");
+	//}
 		
 }
