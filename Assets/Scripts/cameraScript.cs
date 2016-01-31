@@ -5,9 +5,13 @@ public class cameraScript : MonoBehaviour {
 
 	float speed = 1f;
 
+	float timeLeft = 31.0f;
+
+	private TextMesh timer;
+
 	// Use this for initialization
 	void Start () {
-	
+		timer = GameObject.Find ("Timer").GetComponent<TextMesh> ();
 	}
 
 	void Update()
@@ -15,19 +19,44 @@ public class cameraScript : MonoBehaviour {
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
+			if (timer) {
+				timer.transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
+			}
 		}
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			transform.Translate(new Vector3(-speed * Time.deltaTime,0,0));
+			if (timer) {
+				timer.transform.Translate (new Vector3 (-speed * Time.deltaTime, 0, 0));
+			}
 		}
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
 			transform.Translate(new Vector3(0,-speed * Time.deltaTime,0));
+			if (timer) {
+				timer.transform.Translate (new Vector3 (0, -speed * Time.deltaTime, 0));
+			}
 		}
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
+			if (timer) {
+				timer.transform.Translate (new Vector3 (0, speed * Time.deltaTime, 0));
+			}
 		}
+
+		if (timeLeft >= 0) {
+			timerFunc ();
+		}
+	}
+
+	void timerFunc(){
+		timeLeft -= Time.deltaTime;
+		timer.text = ((int) timeLeft).ToString();
+		if (timeLeft < 0){
+			Destroy (timer);
+		}
+
 	}
 
 
