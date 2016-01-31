@@ -17,7 +17,7 @@ public class Level1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        buildSeq();
+        buildSeq(nOpt);
 
 	}
 
@@ -26,31 +26,27 @@ public class Level1 : MonoBehaviour {
 			
 	}
 
-    public void buildSeq() {
+    public void buildSeq(int r) {   // r --> nOpt
 
-        for (int i = 0; i < nSeq; i++) {
+        while (seq.Count > 0) {
 
-            createSeq(nOpt);
+            seq.RemoveAt(0);        // clear the old Array if there is one
 
         }
 
-        for (int i = 0; i < seq.Count; i++) {    // trace
+        for (int i = 0; i < nSeq; i++) {
 
-            Debug.Log(seq[i]);
+            int n = Random.Range(1, r + 1);
+            seq.Add(n);
+
+        }
+
+        for (int j = 0; j < seq.Count; j++) {    // trace
+
+            Debug.Log(seq[j]);
 
         }
 
     }
-
-    private void createSeq(int r) {
-
-		int n;
-		do {
-			n = Random.Range (1, r + 1);
-		} while (seq.Contains(n));
-	
-		seq.Add(n);
-
-	}
 		
 }

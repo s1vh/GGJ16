@@ -35,6 +35,8 @@ public class dish2 : MonoBehaviour
 
                 //reset routine
                 level1.inputOrder = 0;
+                //level1.buildSeq(level1.nOpt, level1.seq);
+                level1.buildSeq(level1.nOpt);
             }
 
         } else {                                        // not EQUAL
