@@ -7,72 +7,52 @@ public class Level1 : MonoBehaviour {
 
 	public List<int> seq = new List<int>();
 	public int dish;
+    public int nOpt = 4;
+    public int nSeq = 4;
+    public int inputOrder = 0;
+    public int difficulty = 0;
 
-	public List<int> seq2 = new List<int>();
-
-	bool show = true;
-
+    bool show = true;
 
 	// Use this for initialization
 	void Start () {
 
-		for (int i = 0; i <= 3; i++){
-			createSeq (4);
-
-		}
-
-		for (int i = 0; i < seq.Count; i++){
-			Debug.Log (seq[i]);
-		}
-
-
+        buildSeq(nOpt);
 
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log (dish);
-		if(seq2.Count == 4 && show == true){
-			showSeqUser ();
-			compareSeqs ();
-			seq2.Clear ();
-		}
 			
-
-
 	}
 
-	private void createSeq(int r){
+    public void buildSeq(int r) {   // r --> nOpt
 
-		int n;
-		do {
-			n = Random.Range (1, r + 1);
-		} while (seq.Contains (n));
-	
-		seq.Add (n);
+        while (seq.Count > 0) {
 
-	}
+            seq.RemoveAt(0);        // clear the old Array if there is one
 
-	private void showSeqUser(){
+        }
 
-		for (int i = 0; i < seq2.Count; i++) {
-			Debug.Log (seq2 [i]);
-		}
-			
-		show = false;
+        for (int i = 0; i < nSeq + difficulty; i++) {
 
-	}
+            int n = Random.Range(1, r + 1);
+            seq.Add(n);
 
-	private void compareSeqs(){
+        }
 
-		if (seq2.Count == 4 && seq [0] == seq2 [0] && seq [1] == seq2 [1] && seq [2] == seq2 [2] && seq [3] == seq2 [3]) {
-			win ();
-		}
+        showSeq(seq);
 
-	}
+    }
 
-	private void win(){
-		Debug.Log("WIN");
-	}
+    public void showSeq(List<int> l) {
+
+        for (int i = 0; i < l.Count; i++) {    // trace
+
+            Debug.Log(l[i]);
+
+        }
+
+    }
 		
 }
