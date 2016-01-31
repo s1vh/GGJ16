@@ -7,29 +7,17 @@ public class Level1 : MonoBehaviour {
 
 	public List<int> seq = new List<int>();
 	public int dish;
+    public int nOpt = 4;
     public int nSeq = 4;
     public int inputOrder = 0;
     //public int difficulty = 0;
 
     bool show = true;
 
-
 	// Use this for initialization
 	void Start () {
 
         buildSeq();
-
-        //for (int i = 0; i < nSeq; i++) {
-
-			//createSeq(4);
-
-		//}
-
-		//for (int i = 0; i < seq.Count; i++) {    // trace
-
-			//Debug.Log(seq[i]);
-
-		//}
 
 	}
 
@@ -42,7 +30,7 @@ public class Level1 : MonoBehaviour {
 
         for (int i = 0; i < nSeq; i++) {
 
-            createSeq(4);
+            createSeq(nOpt);
 
         }
 
@@ -59,9 +47,9 @@ public class Level1 : MonoBehaviour {
 		int n;
 		do {
 			n = Random.Range (1, r + 1);
-		} while (seq.Contains (n));
+		} while (seq.Contains(n));
 	
-		seq.Add (n);
+		seq.Add(n);
 
 	}
 		
