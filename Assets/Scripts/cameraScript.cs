@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class cameraScript : MonoBehaviour {
@@ -65,6 +66,7 @@ public class cameraScript : MonoBehaviour {
 		if(col.gameObject.tag == "scene_1")
 		{
 			Debug.Log("Centrar viñeta 1");
+			SceneManager.LoadScene ("Level1");
 		}
 		else if(col.gameObject.tag == "scene_2")
 		{

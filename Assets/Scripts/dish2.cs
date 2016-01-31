@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class dish2 : MonoBehaviour
@@ -32,6 +33,10 @@ public class dish2 : MonoBehaviour
             {
                 Debug.Log("YOU WIN");   // trace
                 level1.difficulty++;
+
+
+				SceneManager.LoadScene ("Main");
+
 
                 //reset routine
                 level1.inputOrder = 0;

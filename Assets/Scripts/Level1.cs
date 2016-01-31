@@ -14,16 +14,35 @@ public class Level1 : MonoBehaviour {
 
     bool show = true;
 
+	public float timeLeft;
+
+	private TextMesh timer;
+
 	// Use this for initialization
 	void Start () {
 
         buildSeq(nOpt);
 
+		timer = GameObject.Find ("Timer").GetComponent<TextMesh> ();
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-			
+
+		if (timeLeft >= 0) {
+			timerFunc ();
+		}
+		timer.text = "GAME OVER";
+	}
+
+	void timerFunc(){
+		
+		timer.text = ((int) timeLeft).ToString();
+		if (timeLeft < 0){
+			Destroy (timer);
+		}
+
 	}
 
     public void buildSeq(int r) {   // r --> nOpt

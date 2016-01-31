@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class dish1 : MonoBehaviour
@@ -33,9 +34,15 @@ public class dish1 : MonoBehaviour
                 Debug.Log("YOU WIN");   // trace
                 level1.difficulty++;
 
+
+				SceneManager.LoadScene ("Main");
+
+
                 //reset routine
                 level1.inputOrder = 0;
                 level1.buildSeq(level1.nOpt);
+
+
             }
 
         } else {                                        // not EQUAL
