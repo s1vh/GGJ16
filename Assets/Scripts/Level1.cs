@@ -10,7 +10,7 @@ public class Level1 : MonoBehaviour {
     public int nOpt = 4;
     public int nSeq = 4;
     public int inputOrder = 0;
-    //public int difficulty = 0;
+    public int difficulty = 0;
 
     bool show = true;
 
@@ -34,16 +34,22 @@ public class Level1 : MonoBehaviour {
 
         }
 
-        for (int i = 0; i < nSeq; i++) {
+        for (int i = 0; i < nSeq + difficulty; i++) {
 
             int n = Random.Range(1, r + 1);
             seq.Add(n);
 
         }
 
-        for (int j = 0; j < seq.Count; j++) {    // trace
+        showSeq(seq);
 
-            Debug.Log(seq[j]);
+    }
+
+    public void showSeq(List<int> l) {
+
+        for (int i = 0; i < l.Count; i++) {    // trace
+
+            Debug.Log(l[i]);
 
         }
 

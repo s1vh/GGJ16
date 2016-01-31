@@ -31,17 +31,18 @@ public class dish2 : MonoBehaviour
             if (level1.inputOrder == level1.seq.Count)  // if COMPLETED
             {
                 Debug.Log("YOU WIN");   // trace
-                //level1.difficulty++;
+                level1.difficulty++;
 
                 //reset routine
                 level1.inputOrder = 0;
-                //level1.buildSeq(level1.nOpt, level1.seq);
                 level1.buildSeq(level1.nOpt);
             }
 
         } else {                                        // not EQUAL
 
             Debug.Log("FAIL");          // trace
+            level1.inputOrder = 0;
+            level1.showSeq(level1.seq);
         }
 
     }
