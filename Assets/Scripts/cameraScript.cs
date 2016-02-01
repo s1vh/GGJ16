@@ -22,51 +22,53 @@ public class cameraScript : MonoBehaviour
 		switch(gamestate)
         {
             case 0: // move camera
-
-			    if(Input.GetKey(KeyCode.RightArrow))
-			    {
-				    transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
-
-				    if (timer) {
-					    timer.transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
-				    }
-			    }
-
-			    if(Input.GetKey(KeyCode.LeftArrow))
-			    {
-				    transform.Translate(new Vector3(-speed * Time.deltaTime,0,0));
-
-				    if (timer) {
-					    timer.transform.Translate (new Vector3 (-speed * Time.deltaTime, 0, 0));
-				    }
-			    }
-
-			    if(Input.GetKey(KeyCode.DownArrow))
-			    {
-				    transform.Translate(new Vector3(0,-speed * Time.deltaTime,0));
-
-				    if (timer) {
-					    timer.transform.Translate (new Vector3 (0, -speed * Time.deltaTime, 0));
-				    }
-			    }
-
-			    if(Input.GetKey(KeyCode.UpArrow))
-			    {
-				    transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
-
-				    if (timer) {
-					    timer.transform.Translate (new Vector3 (0, speed * Time.deltaTime, 0));
-				    }
-			    }
-
-			    if (timeLeft >= 0)
-                {
-				    timerFunc();
-			    }
-
+                moveCamera();
                 break;
 		}
 	}
+
+    void moveCamera()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+
+            if (timer)
+            {
+                timer.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+
+            if (timer)
+            {
+                timer.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+            }
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+
+            if (timer)
+            {
+                timer.transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+            }
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+
+            if (timer)
+            {
+                timer.transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+            }
+        }
+    }
 
 	void timerFunc()
     {

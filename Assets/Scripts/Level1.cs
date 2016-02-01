@@ -10,8 +10,7 @@ public class Level1 : MonoBehaviour {
     public int nSeq = 4;
     public int inputOrder = 0;
     public int difficulty = 0;
-
-    //bool show = true;
+    public bool locked = true;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +26,8 @@ public class Level1 : MonoBehaviour {
 
     public void buildSeq(int r) {   // r --> nOpt
 
+        locked = true;
+
         while (seq.Count > 0) {
 
             seq.RemoveAt(0);        // clear the old Array if there is one
@@ -41,6 +42,7 @@ public class Level1 : MonoBehaviour {
         }
 
         showSeq(seq);
+        locked = false;
 
     }
 

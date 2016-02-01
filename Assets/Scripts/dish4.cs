@@ -21,26 +21,30 @@ public class dish4 : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (level1.seq[level1.inputOrder] == 4)         // if EQUAL
+        if (!level1.locked)
         {
-            Debug.Log("Ok");            // trace
-            level1.inputOrder++;
-
-            if (level1.inputOrder == level1.seq.Count)  // if COMPLETED
+            if (level1.seq[level1.inputOrder] == 4)         // if EQUAL
             {
-                Debug.Log("YOU WIN");   // trace
-                level1.difficulty++;
+                Debug.Log("Ok");            // trace
+                level1.inputOrder++;
 
-                //reset routine
+                if (level1.inputOrder == level1.seq.Count)  // if COMPLETED
+                {
+                    Debug.Log("YOU WIN");   // trace
+                    level1.difficulty++;
+
+                    //reset routine
+                    level1.inputOrder = 0;
+                    level1.buildSeq(level1.nOpt);
+                }
+
+            } else {                                        // not EQUAL
+
+                Debug.Log("FAIL");          // trace
                 level1.inputOrder = 0;
-                level1.buildSeq(level1.nOpt);
+                level1.showSeq(level1.seq);
             }
 
-        } else {                                        // not EQUAL
-
-            Debug.Log("FAIL");          // trace
-            level1.inputOrder = 0;
-            level1.showSeq(level1.seq);
         }
 
     }
