@@ -1,0 +1,14 @@
+switch(gamestate)
+        {
+            case 0: // move camera
+                Debug.Log(gamestate);       // trace
+                moveCamera();
+                break;
+
+            case 1: // viñeta 1
+
+                buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+                break;
+
+
+		}

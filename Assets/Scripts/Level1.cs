@@ -5,21 +5,21 @@ using System.Collections.Generic;
 
 public class Level1 : MonoBehaviour
 {
-    public GameObject backgroundLevel1;
+    public GameObject domainLevel1;
     Game game;
 
-    public List<int> seq = new List<int>();
+    //public List<int> seq = new List<int>();
     public int nOpt = 4;
     public int nSeq = 4;
-    public int inputOrder = 0;
+    //public int inputOrder = 0;
     public int difficulty = 0;
-    public bool locked = true;
+    //public bool locked = true;
 
 	// Use this for initialization
 	void Start ()
     {
-        game = backgroundLevel1.GetComponent<Game>();
-        buildSeq(nSeq);
+        game = domainLevel1.GetComponent<Game>();
+        game.buildSeq(nOpt, nSeq, difficulty);
     }
 
 	// Update is called once per frame
@@ -27,34 +27,5 @@ public class Level1 : MonoBehaviour
     {
 
 	}
-
-    public void buildSeq(int r)     // r --> nOpt
-    {   
-        locked = true;
-
-        while (seq.Count > 0)
-        {
-            seq.RemoveAt(0);        // clear the old Array if there is one
-        }
-
-        for (int i = 0; i < nSeq + difficulty; i++)
-        {
-            int n = Random.Range(1, r + 1);
-            seq.Add(n);
-        }
-
-        showSeq(seq);
-        locked = false;
-
-    }
-
-    public void showSeq(List<int> l)
-    {
-        for (int i = 0; i < l.Count; i++)
-        {    
-            Debug.Log(l[i]);        // trace
-        }
-
-    }
 		
 }

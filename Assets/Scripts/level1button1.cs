@@ -4,12 +4,16 @@ using System.Collections;
 public class level1button1 : MonoBehaviour
 {
 
+    public GameObject domainLevel1;
     public GameObject backgroundLevel1;
+
+    Game game;
     Level1 level1;
 
     // Use this for initialization
     void Start()
     {
+        game = domainLevel1.GetComponent<Game>();
         level1 = backgroundLevel1.GetComponent<Level1>();
     }
 
@@ -21,28 +25,28 @@ public class level1button1 : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!level1.locked)
+        if (!game.locked && game.gamestate == 0)
         {
-            if (level1.seq[level1.inputOrder] == 1)         // if EQUAL
+            if (game.seq[game.inputOrder] == 1)         // if EQUAL
             {
                 Debug.Log("Ok");            // trace
-                level1.inputOrder++;
+                game.inputOrder++;
 
-                if (level1.inputOrder == level1.seq.Count)  // if COMPLETED
+                if (game.inputOrder == game.seq.Count)  // if COMPLETED
                 {
                     Debug.Log("YOU WIN");   // trace
                     level1.difficulty++;
 
                     //reset routine
-                    level1.inputOrder = 0;
-                    level1.buildSeq(level1.nOpt);
+                    game.inputOrder = 0;
+                    game.buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
                 }
 
-            } else {                                        // not EQUAL
+            } else {                                    // not EQUAL
 
                 Debug.Log("FAIL");          // trace
-                level1.inputOrder = 0;
-                level1.showSeq(level1.seq);
+                game.inputOrder = 0;
+                game.showSeq(game.seq);
             }
 
         } else {

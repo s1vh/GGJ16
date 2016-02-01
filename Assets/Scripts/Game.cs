@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
-    public int gamestate = 0;
+    //public GameObject backgroundLevel1;
+    Level1 level1;
 
-	float speed = 1f;
+    public int gamestate = 1;
+    public bool locked = false;
+    public List<int> seq = new List<int>();
+    public int inputOrder = 0;
+
+    float speed = 1f;
 	float timeLeft = 31.0f;
-
 	Camera cam = Camera.main;
 
 	private TextMesh timer;
@@ -15,28 +21,56 @@ public class Game : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		timer = GameObject.Find("Timer").GetComponent<TextMesh> ();
+        Debug.Log("Initializing scene...");   // trace
+        //level1 = backgroundLevel1.GetComponent<Level1>();
+
+        timer = GameObject.Find("Timer").GetComponent<TextMesh> ();
 	}
 
-	void Update()
+    // Update is called once per frame
+    void Update()
 	{
-        if (Input.GetMouseButton(1))
+        //Debug.Log(gamestate);
+        if (gamestate == 0)
         {
-            gamestate = 0;
+            moveCamera();
         }
 
-		switch(gamestate)
-        {
-            case 0: // move camera
+        //if (gamestate == 0)
+        //{
+            //buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+        //}
 
-                moveCamera();
-                break;
-            
-            //case 1; // viñeta 1
-
-
-		}
 	}
+
+    public void buildSeq(int r, int n, int d)   // r --> nOpt, n --> nSeq, d --> difficulty
+    {
+        locked = true;
+
+        while (seq.Count > 0)                   // clear the old Array if there is one
+        {
+            seq.RemoveAt(0);
+        }
+
+        for (int i = 0; i < n + d; i++)
+        {
+            int m = Random.Range(1, r + 1);
+            seq.Add(m);
+        }
+
+        showSeq(seq);
+        locked = false;
+
+    }
+
+    public void showSeq(List<int> l)
+    {
+        for (int i = 0; i < l.Count; i++)
+        {
+            Debug.Log(l[i]);        // trace
+        }
+
+    }
 
     void moveCamera()
     {
