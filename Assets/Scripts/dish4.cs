@@ -45,6 +45,9 @@ public class dish4 : MonoBehaviour
                 level1.showSeq(level1.seq);
             }
 
+        } else {
+
+            Debug.Log("locked!");           // trace
         }
 
     }

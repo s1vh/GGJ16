@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Level1 : MonoBehaviour {
 
-	public List<int> seq = new List<int>();
+    public List<int> seq = new List<int>();
     public int nOpt = 4;
     public int nSeq = 4;
     public int inputOrder = 0;
