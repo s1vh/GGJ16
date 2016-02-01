@@ -13,17 +13,28 @@ public class cameraScript : MonoBehaviour
 	private TextMesh timer;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		timer = GameObject.Find("Timer").GetComponent<TextMesh> ();
 	}
 
 	void Update()
 	{
+        if (Input.GetMouseButton(1))
+        {
+            gamestate = 0;
+        }
+
 		switch(gamestate)
         {
             case 0: // move camera
+
                 moveCamera();
                 break;
+            
+            //case 1; // viñeta 1
+
+
 		}
 	}
 
