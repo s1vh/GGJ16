@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class dish2 : MonoBehaviour
+public class level1button3 : MonoBehaviour
 {
 
     public GameObject backgroundLevel1;
@@ -23,7 +23,7 @@ public class dish2 : MonoBehaviour
     {
         if (!level1.locked)
         {
-            if (level1.seq[level1.inputOrder] == 2)         // if EQUAL
+            if (level1.seq[level1.inputOrder] == 3)         // if EQUAL
             {
                 Debug.Log("Ok");            // trace
                 level1.inputOrder++;

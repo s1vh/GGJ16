@@ -19,6 +19,7 @@ public class Level1 : MonoBehaviour
 	void Start ()
     {
         game = backgroundLevel1.GetComponent<cameraScript>();
+        //buildSeq(nSeq);
     }
 
 	// Update is called once per frame
