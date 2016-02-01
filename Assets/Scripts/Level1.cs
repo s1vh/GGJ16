@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Level1 : MonoBehaviour
 {
     public GameObject backgroundLevel1;
-    cameraScript game;
+    Game game;
 
     public List<int> seq = new List<int>();
     public int nOpt = 4;
@@ -18,8 +18,8 @@ public class Level1 : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        game = backgroundLevel1.GetComponent<cameraScript>();
-        //buildSeq(nSeq);
+        game = backgroundLevel1.GetComponent<Game>();
+        buildSeq(nSeq);
     }
 
 	// Update is called once per frame
@@ -50,9 +50,9 @@ public class Level1 : MonoBehaviour
 
     public void showSeq(List<int> l)
     {
-        for (int i = 0; i < l.Count; i++)   // trace
+        for (int i = 0; i < l.Count; i++)
         {    
-            Debug.Log(l[i]);
+            Debug.Log(l[i]);        // trace
         }
 
     }

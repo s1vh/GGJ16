@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class cameraScript : MonoBehaviour
+public class Game : MonoBehaviour
 {
     public int gamestate = 0;
 
