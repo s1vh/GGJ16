@@ -21,8 +21,6 @@ public class dish4 : MonoBehaviour
 
     void OnMouseUp()
     {
-        level1.dish = 4;
-
         if (level1.seq[level1.inputOrder] == 4)         // if EQUAL
         {
             Debug.Log("Ok");            // trace
