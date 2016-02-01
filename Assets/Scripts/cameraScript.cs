@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class cameraScript : MonoBehaviour {
+public class cameraScript : MonoBehaviour
+{
+    public int gamestate = 0;
 
 	float speed = 1f;
 	float timeLeft = 31.0f;
-	bool isPlaying = false;
 
 	Camera cam = Camera.main;
 
@@ -13,52 +14,71 @@ public class cameraScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timer = GameObject.Find ("Timer").GetComponent<TextMesh> ();
+		timer = GameObject.Find("Timer").GetComponent<TextMesh> ();
 	}
 
 	void Update()
 	{
-		if(!isPlaying){
-			if(Input.GetKey(KeyCode.RightArrow))
-			{
-				transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
-				if (timer) {
-					timer.transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
-				}
-			}
-			if(Input.GetKey(KeyCode.LeftArrow))
-			{
-				transform.Translate(new Vector3(-speed * Time.deltaTime,0,0));
-				if (timer) {
-					timer.transform.Translate (new Vector3 (-speed * Time.deltaTime, 0, 0));
-				}
-			}
-			if(Input.GetKey(KeyCode.DownArrow))
-			{
-				transform.Translate(new Vector3(0,-speed * Time.deltaTime,0));
-				if (timer) {
-					timer.transform.Translate (new Vector3 (0, -speed * Time.deltaTime, 0));
-				}
-			}
-			if(Input.GetKey(KeyCode.UpArrow))
-			{
-				transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
-				if (timer) {
-					timer.transform.Translate (new Vector3 (0, speed * Time.deltaTime, 0));
-				}
-			}
+		switch(gamestate)
+        {
+            case 0: // move camera
 
-			if (timeLeft >= 0) {
-				timerFunc ();
-			}
+			    if(Input.GetKey(KeyCode.RightArrow))
+			    {
+				    transform.Translate(new Vector3(speed * Time.deltaTime,0,0));
+
+				    if (timer) {
+					    timer.transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
+				    }
+			    }
+
+			    if(Input.GetKey(KeyCode.LeftArrow))
+			    {
+				    transform.Translate(new Vector3(-speed * Time.deltaTime,0,0));
+
+				    if (timer) {
+					    timer.transform.Translate (new Vector3 (-speed * Time.deltaTime, 0, 0));
+				    }
+			    }
+
+			    if(Input.GetKey(KeyCode.DownArrow))
+			    {
+				    transform.Translate(new Vector3(0,-speed * Time.deltaTime,0));
+
+				    if (timer) {
+					    timer.transform.Translate (new Vector3 (0, -speed * Time.deltaTime, 0));
+				    }
+			    }
+
+			    if(Input.GetKey(KeyCode.UpArrow))
+			    {
+				    transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
+
+				    if (timer) {
+					    timer.transform.Translate (new Vector3 (0, speed * Time.deltaTime, 0));
+				    }
+			    }
+
+			    if (timeLeft >= 0)
+                {
+				    timerFunc();
+			    }
+
+                break;
 		}
 	}
 
-	void timerFunc(){
+	void timerFunc()
+    {
 		timeLeft -= Time.deltaTime;
 		timer.text = ((int) timeLeft).ToString();
-		if (timeLeft < 0){
-			Destroy (timer);
+
+		if (timeLeft < 0)
+        {
+            Destroy(timer);
+
+            // GAME OVER
+            gamestate = -1;
 		}
 
 	}
@@ -73,9 +93,11 @@ public class cameraScript : MonoBehaviour {
 				col.gameObject.transform.position.x,
 				col.gameObject.transform.position.y,
 				-10);
-			isPlaying = true;
-			Debug.Log("Centrar viñeta 1");
+
+			Debug.Log("Set viñeta 1");  // trace
+            gamestate = 1;
 		}
+
 		else if(col.gameObject.tag == "scene_2")
 		{
 			col.gameObject.GetComponent<Collider2D>().enabled = false;
@@ -84,9 +106,11 @@ public class cameraScript : MonoBehaviour {
 				col.gameObject.transform.position.x,
 				col.gameObject.transform.position.y,
 				-10);
-			isPlaying = true;
-			Debug.Log("Centrar viñeta 2");
+
+			Debug.Log("Set viñeta 2");  // trace
+            gamestate = 2;
 		}
+
 		else if(col.gameObject.tag == "scene_3")
 		{
 			col.gameObject.GetComponent<Collider2D>().enabled = false;
@@ -95,9 +119,11 @@ public class cameraScript : MonoBehaviour {
 				col.gameObject.transform.position.x,
 				col.gameObject.transform.position.y,
 				-10);
-			isPlaying = true;
-			Debug.Log("Centrar viñeta 3");
+
+			Debug.Log("Set viñeta 3");  // trace
+            gamestate = 3;
 		}
+
 		else if(col.gameObject.tag == "scene_4")
 		{
 			col.gameObject.GetComponent<Collider2D>().enabled = false;
@@ -106,9 +132,11 @@ public class cameraScript : MonoBehaviour {
 				col.gameObject.transform.position.x,
 				col.gameObject.transform.position.y,
 				-10);
-			isPlaying = true;
-			Debug.Log("Centrar viñeta 4");
+
+			Debug.Log("Set viñeta 4");  // trace
+            gamestate = 4;
 		}
+
 		else if(col.gameObject.tag == "scene_5")
 		{
 			col.gameObject.GetComponent<Collider2D>().enabled = false;
@@ -117,10 +145,11 @@ public class cameraScript : MonoBehaviour {
 				col.gameObject.transform.position.x,
 				col.gameObject.transform.position.y,
 				-10);
-			isPlaying = true;
-			Debug.Log("Centrar viñeta 5");
-		}
-	}
 
+			Debug.Log("Set viñeta 5");  // trace
+            gamestate = 5;
+		}
+
+	}
 
 }
