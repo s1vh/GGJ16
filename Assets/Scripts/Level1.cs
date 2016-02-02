@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 
 
 public class Level1 : MonoBehaviour
@@ -13,13 +13,14 @@ public class Level1 : MonoBehaviour
     public int nSeq = 4;
     //public int inputOrder = 0;
     public int difficulty = 0;
-    //public bool locked = true;
+    public bool lock1 = true;
 
 	// Use this for initialization
 	void Start ()
     {
         game = domainLevel1.GetComponent<Game>();
-        game.buildSeq(nOpt, nSeq, difficulty);
+        //game.buildSeq(nOpt, nSeq, difficulty);
+        //Debug.Log("gamestate="+game.gamestate);
     }
 
 	// Update is called once per frame

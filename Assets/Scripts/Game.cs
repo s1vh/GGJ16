@@ -4,48 +4,50 @@ using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
-    //public GameObject backgroundLevel1;
+    public GameObject backgroundLevel1;
     Level1 level1;
 
-    public int gamestate = 1;
-    public bool locked = false;
+    //public int gamestate = 10;
+    //public bool locked = false;
     public List<int> seq = new List<int>();
     public int inputOrder = 0;
+    public int gamestate = 1;
+    public bool wait = false;
 
     float speed = 1f;
-	float timeLeft = 31.0f;
-	Camera cam = Camera.main;
+    float timeLeft = 31.0f;
+    Camera cam = Camera.main;
 
-	private TextMesh timer;
+    private TextMesh timer;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         Debug.Log("Initializing scene...");   // trace
-        //level1 = backgroundLevel1.GetComponent<Level1>();
+        level1 = backgroundLevel1.GetComponent<Level1>();
 
-        timer = GameObject.Find("Timer").GetComponent<TextMesh> ();
-	}
+        timer = GameObject.Find("Timer").GetComponent<TextMesh>();
+    }
 
     // Update is called once per frame
     void Update()
-	{
-        //Debug.Log(gamestate);
+    {
         if (gamestate == 0)
         {
             moveCamera();
         }
 
-        //if (gamestate == 0)
-        //{
-            //buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
-        //}
+        if (gamestate == 1 && !wait)
+        {
+            buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+            wait = true;
+        }
 
-	}
+    }
 
     public void buildSeq(int r, int n, int d)   // r --> nOpt, n --> nSeq, d --> difficulty
     {
-        locked = true;
+        //locked = true;
 
         while (seq.Count > 0)                   // clear the old Array if there is one
         {
@@ -59,7 +61,7 @@ public class Game : MonoBehaviour
         }
 
         showSeq(seq);
-        locked = false;
+        //locked = false;
 
     }
 
@@ -115,88 +117,19 @@ public class Game : MonoBehaviour
         }
     }
 
-	void timerFunc()
+    void timerFunc()
     {
-		timeLeft -= Time.deltaTime;
-		timer.text = ((int) timeLeft).ToString();
+        timeLeft -= Time.deltaTime;
+        timer.text = ((int)timeLeft).ToString();
 
-		if (timeLeft < 0)
+        if (timeLeft < 0)
         {
             Destroy(timer);
 
             // GAME OVER
-            gamestate = -1;
-		}
+            //gamestate = -1;
+        }
 
-	}
-
-
-	void OnCollisionEnter2D (Collision2D col)
-	{
-		if(col.gameObject.tag == "scene_1")
-		{
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			transform.position = new Vector3(
-				col.gameObject.transform.position.x,
-				col.gameObject.transform.position.y,
-				-10);
-
-			Debug.Log("Set viñeta 1");  // trace
-            gamestate = 1;
-		}
-
-		else if(col.gameObject.tag == "scene_2")
-		{
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			transform.position = new Vector3(
-				col.gameObject.transform.position.x,
-				col.gameObject.transform.position.y,
-				-10);
-
-			Debug.Log("Set viñeta 2");  // trace
-            gamestate = 2;
-		}
-
-		else if(col.gameObject.tag == "scene_3")
-		{
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			transform.position = new Vector3(
-				col.gameObject.transform.position.x,
-				col.gameObject.transform.position.y,
-				-10);
-
-			Debug.Log("Set viñeta 3");  // trace
-            gamestate = 3;
-		}
-
-		else if(col.gameObject.tag == "scene_4")
-		{
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			transform.position = new Vector3(
-				col.gameObject.transform.position.x,
-				col.gameObject.transform.position.y,
-				-10);
-
-			Debug.Log("Set viñeta 4");  // trace
-            gamestate = 4;
-		}
-
-		else if(col.gameObject.tag == "scene_5")
-		{
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			col.gameObject.GetComponent<Collider2D>().enabled = false;
-			transform.position = new Vector3(
-				col.gameObject.transform.position.x,
-				col.gameObject.transform.position.y,
-				-10);
-
-			Debug.Log("Set viñeta 5");  // trace
-            gamestate = 5;
-		}
-
-	}
+    }
 
 }

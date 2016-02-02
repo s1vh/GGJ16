@@ -1,0 +1,67 @@
+	void OnCollisionEnter2D (Collision2D col)
+	{
+		if(col.gameObject.tag == "scene_1")
+		{
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			transform.position = new Vector3(
+				col.gameObject.transform.position.x,
+				col.gameObject.transform.position.y,
+				-10);
+
+			Debug.Log("Set viñeta 1");  // trace
+            gamestate = 1;
+		}
+
+		else if(col.gameObject.tag == "scene_2")
+		{
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			transform.position = new Vector3(
+				col.gameObject.transform.position.x,
+				col.gameObject.transform.position.y,
+				-10);
+
+			Debug.Log("Set viñeta 2");  // trace
+            gamestate = 2;
+		}
+
+		else if(col.gameObject.tag == "scene_3")
+		{
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			transform.position = new Vector3(
+				col.gameObject.transform.position.x,
+				col.gameObject.transform.position.y,
+				-10);
+
+			Debug.Log("Set viñeta 3");  // trace
+            gamestate = 3;
+		}
+
+		else if(col.gameObject.tag == "scene_4")
+		{
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			transform.position = new Vector3(
+				col.gameObject.transform.position.x,
+				col.gameObject.transform.position.y,
+				-10);
+
+			Debug.Log("Set viñeta 4");  // trace
+            gamestate = 4;
+		}
+
+		else if(col.gameObject.tag == "scene_5")
+		{
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
+			transform.position = new Vector3(
+				col.gameObject.transform.position.x,
+				col.gameObject.transform.position.y,
+				-10);
+
+			Debug.Log("Set viñeta 5");  // trace
+            gamestate = 5;
+		}
+
+	}

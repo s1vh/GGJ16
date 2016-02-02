@@ -25,7 +25,7 @@ public class level1button4 : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!game.locked && game.gamestate == 0)
+        if (!level1.lock1)
         {
             if (game.seq[game.inputOrder] == 4)         // if EQUAL
             {
