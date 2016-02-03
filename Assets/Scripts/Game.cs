@@ -34,6 +34,8 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerFunc();
+
         // these should be a SWITCH but they are fucking bugged at Unity
         // so let's code like retards
         if (gamestate == 0)
@@ -128,9 +130,10 @@ public class Game : MonoBehaviour
 
         if (timeLeft < 0)
         {
-            Destroy(timer);
+            //Destroy(timer);
 
             // GAME OVER
+            Debug.Log("GAME OVER");     // trace
             //gamestate = -1;
         }
 
