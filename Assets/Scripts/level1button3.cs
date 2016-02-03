@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using UnityEngine;
-using System.Collections;
-
 public class level1button3 : MonoBehaviour
 {
 
@@ -28,7 +25,7 @@ public class level1button3 : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!level1.lock1)
+        if (level1.locked == false)
         {
             if (game.seq[game.inputOrder] == 3)         // if EQUAL
             {
@@ -41,8 +38,10 @@ public class level1button3 : MonoBehaviour
                     level1.difficulty++;
 
                     //reset routine
+                    level1.locked = true;
                     game.inputOrder = 0;
                     game.buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+                    level1.locked = false;
                 }
 
             } else {                                    // not EQUAL

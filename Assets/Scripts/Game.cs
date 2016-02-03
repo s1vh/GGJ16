@@ -11,8 +11,8 @@ public class Game : MonoBehaviour
     //public bool locked = false;
     public List<int> seq = new List<int>();
     public int inputOrder = 0;
-    public int gamestate = 1;
-    public bool wait = false;
+    public int gamestate;
+    public bool wait;
 
     float speed = 1f;
     float timeLeft = 31.0f;
@@ -27,20 +27,29 @@ public class Game : MonoBehaviour
         level1 = backgroundLevel1.GetComponent<Level1>();
 
         timer = GameObject.Find("Timer").GetComponent<TextMesh>();
+
+        gamestate = 0;
+        wait = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // these should be a SWITCH but they are fucking bugged at Unity
+        // so let's code like retards
         if (gamestate == 0)
         {
             moveCamera();
         }
 
-        if (gamestate == 1 && !wait)
+        if (wait == false)
         {
-            buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
-            wait = true;
+            if (gamestate == 1)
+            {
+                buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+                wait = true;
+            }
+
         }
 
     }

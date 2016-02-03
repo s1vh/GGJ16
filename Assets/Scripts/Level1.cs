@@ -13,7 +13,7 @@ public class Level1 : MonoBehaviour
     public int nSeq = 4;
     //public int inputOrder = 0;
     public int difficulty = 0;
-    public bool lock1 = true;
+    public bool locked;
 
 	// Use this for initialization
 	void Start ()
@@ -21,6 +21,8 @@ public class Level1 : MonoBehaviour
         game = domainLevel1.GetComponent<Game>();
         //game.buildSeq(nOpt, nSeq, difficulty);
         //Debug.Log("gamestate="+game.gamestate);
+
+        locked = true;
     }
 
 	// Update is called once per frame
