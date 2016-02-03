@@ -11,7 +11,6 @@ public class Game : MonoBehaviour
     public int inputOrder = 0;
 
     public int gamestate;   // 0 --> navigation, 1 --> playing, -1 --> game over
-    public bool wait;
 
     float speed = 1f;
     float timeLeft = 31.0f;
@@ -22,13 +21,12 @@ public class Game : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Initializing scene...");   // trace
+        Debug.Log("Initializing scene...");     // trace
         level1 = backgroundLevel1.GetComponent<Level1>();
 
         timer = GameObject.Find("Timer").GetComponent<TextMesh>();
 
         gamestate = 0;
-        wait = true;
     }
 
     // Update is called once per frame
@@ -38,25 +36,36 @@ public class Game : MonoBehaviour
 
         // these should be a SWITCH but they are fucking bugged at Unity
         // so let's code like retards
-        if (gamestate == 0)
+
+        if (gamestate == 0)     // NAVIGATION MODE
         {
             moveCamera();
         }
 
-        if (wait == false)
+        if (gamestate == 1)     // PLAYING
         {
-            if (gamestate == 1)
+            if (Input.GetMouseButtonDown(1))
             {
-                wait = true;
+                // leave current level
+                Debug.Log("Leaving level...");  // trace
+
+                level1.locked = true;           // for each LEVEL
+
+                gamestate = 0;
             }
 
+        }
+
+        if (gamestate == -1)    // GAME OVER
+        {
+            Debug.Log("GAME OVER");     // trace
         }
 
     }
 
     public void buildSeq(int r, int n, int d)   // r --> nOpt, n --> nSeq, d --> difficulty
     {
-        while (seq.Count > 0)                   // clear the old Array if there is one
+        while (seq.Count > 0)           // clear the old Array if there is one
         {
             seq.RemoveAt(0);
         }
@@ -75,7 +84,7 @@ public class Game : MonoBehaviour
     {
         for (int i = 0; i < l.Count; i++)
         {
-            Debug.Log(l[i]);        // trace
+            Debug.Log(l[i]);            // trace
         }
 
     }
@@ -131,10 +140,7 @@ public class Game : MonoBehaviour
         if (timeLeft < 0)
         {
             //Destroy(timer);
-
-            // GAME OVER
-            Debug.Log("GAME OVER");     // trace
-            //gamestate = -1;
+            gamestate = -1;         // game over
         }
 
     }
