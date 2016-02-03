@@ -46,7 +46,9 @@ public class Game : MonoBehaviour
         {
             if (gamestate == 1)
             {
-                buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+                //level1.locked = true;
+                //buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
+                //level1.locked = false;
                 wait = true;
             }
 
