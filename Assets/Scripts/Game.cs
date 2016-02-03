@@ -7,11 +7,10 @@ public class Game : MonoBehaviour
     public GameObject backgroundLevel1;
     Level1 level1;
 
-    //public int gamestate = 10;
-    //public bool locked = false;
     public List<int> seq = new List<int>();
     public int inputOrder = 0;
-    public int gamestate;
+
+    public int gamestate;   // 0 --> navigation, 1 --> playing, -1 --> game over
     public bool wait;
 
     float speed = 1f;
@@ -46,9 +45,6 @@ public class Game : MonoBehaviour
         {
             if (gamestate == 1)
             {
-                //level1.locked = true;
-                //buildSeq(level1.nOpt, level1.nSeq, level1.difficulty);
-                //level1.locked = false;
                 wait = true;
             }
 
@@ -58,8 +54,6 @@ public class Game : MonoBehaviour
 
     public void buildSeq(int r, int n, int d)   // r --> nOpt, n --> nSeq, d --> difficulty
     {
-        //locked = true;
-
         while (seq.Count > 0)                   // clear the old Array if there is one
         {
             seq.RemoveAt(0);
@@ -72,7 +66,6 @@ public class Game : MonoBehaviour
         }
 
         showSeq(seq);
-        //locked = false;
 
     }
 
