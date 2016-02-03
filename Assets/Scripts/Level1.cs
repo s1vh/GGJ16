@@ -30,5 +30,16 @@ public class Level1 : MonoBehaviour
     {
 
 	}
-		
+
+    void OnMouseUp()
+    {
+        if (locked == true && game.gamestate != 1)
+        {
+            Debug.Log("Level 1 activated!");     // trace
+            game.buildSeq(nOpt, nSeq, difficulty);
+            locked = false;
+        }
+    }
+
+
 }
